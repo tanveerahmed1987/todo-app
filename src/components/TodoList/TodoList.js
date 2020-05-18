@@ -14,6 +14,11 @@ function TodoList() {
 
     return (
         <div>
+            <div id="myDIV" className="header">
+            <h2>My To Do List</h2>
+            <input type="text" id="myInput" placeholder="Title..."></input>
+            <span className="addBtn">Add</span>
+            </div>
             <ul>
                 {list.map((item) => {
                     return <li>{item.todo} <span className="close">{'\u00D7'}</span></li>
