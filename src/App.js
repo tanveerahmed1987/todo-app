@@ -19,6 +19,7 @@ function App() {
 
 
   const toggleTodoState = (id) => {
+    console.log('toggleTodoState', id);
     state.todos.forEach(function (todo) {
       if (todo.id === id) {
         todo.isCompleted = !todo.isCompleted;
@@ -27,10 +28,19 @@ function App() {
     setState({ todos: [...state.todos] });
   }
 
+  const deleteTodo = (index) => {
+    console.log('deleteTodo', index);
+    state.todos.splice(index, 1);
+    setState({ todos: [...state.todos] });
+  }
+
   return (
     <>
       <TodoAdd />
-      <TodoList todos={state.todos} completeTodo={toggleTodoState} />
+      <TodoList
+        todos={state.todos}
+        completeTodo={toggleTodoState}
+        deleteTodo={deleteTodo} />
     </>
   );
 }
