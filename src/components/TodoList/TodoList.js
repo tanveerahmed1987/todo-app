@@ -5,7 +5,7 @@ import './TodoList.css';
 function Todo({ item, index, completeTodo, deleteTodo }) {
     return (
         <li className={item.isCompleted ? 'checked' : ''} key={item.id} onClick={() => { completeTodo(item.id) }}>
-            {item.todo} <span className="close" onClick={() => { deleteTodo(index) }}>{'\u00D7'}</span>
+            {index + 1} . {item.todo} <span className="close" onClick={() => { deleteTodo(index) }}>{'\u00D7'}</span>
         </li>
     );
 }

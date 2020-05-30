@@ -6,16 +6,7 @@ import { TodoAdd } from './components/TodoAdd';
 function App() {
   console.log('App Rendering...');
 
-  const [state, setState] = useState({
-    todos: [
-      { id: 1, todo: 'Hit the gym', isCompleted: false },
-      { id: 2, todo: 'Pay bills', isCompleted: true },
-      { id: 3, todo: 'Meet George', isCompleted: false },
-      { id: 4, todo: 'Buy Eggs', isCompleted: false },
-      { id: 5, todo: 'Read a book', isCompleted: false },
-      { id: 6, todo: 'Organize office', isCompleted: false },
-      { id: 7, todo: 'Watch movie', isCompleted: false }],
-  })
+  const [state, setState] = useState({ todos: [] })
 
 
   const toggleTodoState = (id) => {
@@ -34,9 +25,20 @@ function App() {
     setState({ todos: [...state.todos] });
   }
 
+  const addTodo = (todo) => {
+    console.log('addTodo', todo);
+    let tempTodo = {
+      id: state.todos.length + 1,
+      todo: todo,
+      isCompleted: false
+    };
+    state.todos.unshift(tempTodo);
+    setState({ todos: [...state.todos] });
+  }
+
   return (
     <>
-      <TodoAdd />
+      <TodoAdd addTodo={addTodo} />
       <TodoList
         todos={state.todos}
         completeTodo={toggleTodoState}
